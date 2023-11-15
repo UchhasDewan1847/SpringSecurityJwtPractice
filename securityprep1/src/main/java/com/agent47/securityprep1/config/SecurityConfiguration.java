@@ -17,23 +17,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
- /*   @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .csrf().ignoringAntMatchers("/login", "/signup")
-                .authorizeHttpRequests()
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement()
-                .and()
-                .authenticationProvider(authenticationProvider)
-                .addFilterAfter(jwtAuthFilter, BasicAuthenticationFilter.class)
-
-
-        return httpSecurity.build();
-
-    }*/
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -41,8 +24,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/register","/api/v1/auth/authenticate")
                 .permitAll()
-                .anyRequest()
-                .permitAll()
+//                .anyRequest()
+//                .permitAll()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
